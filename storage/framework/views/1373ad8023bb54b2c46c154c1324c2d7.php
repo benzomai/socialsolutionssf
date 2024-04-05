@@ -373,6 +373,7 @@
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -383,6 +384,7 @@
                     <td><a href="#" class="text-primary">At praesentium minu</a></td>
                     <td>$64</td>
                     <td><span class="badge bg-success">Approved</span></td>
+                    <td><span class="badge bg-danger"><i class="bi bi-trash"></i></span></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
