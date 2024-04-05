@@ -17,6 +17,7 @@ class ClientController extends Controller
 {
    public function index() {
         $clients = Clients::all();
+        $user_type = Auth::user()->user_type;
 
         if($clients ->count() > 0 ) {
             return response()->json([
@@ -66,19 +67,15 @@ class ClientController extends Controller
                     'message' => "Client Created Successfully"
                 ], 200);*/
             } else {
-                return reponse()->json([
+                return response()->json([
                     'status' => 500,
                     'message' => "Something went wrong"
                 ], 500);
             }
 
-            
+
 
         }
 
-
-
-
-        
    }
 }
