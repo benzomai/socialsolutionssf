@@ -20,7 +20,7 @@ class UserTypeMiddleware
         if(Auth::user() && Auth::user()->user_type == $user_type ) {
             return $next($request);
         }
-
+        
         return response()->json(["msg"=> $user_type . " = " . Auth::user()->user_type . " && " . Auth::check() . " You don't have  permission to access this page"]);
 
     }
