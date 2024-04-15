@@ -7,23 +7,30 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Social Solutions</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Albert-Sans" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Template Main CSS File -->
+ <link href="../assets/css/style.css" rel="stylesheet">
+ <link href="../assets/css/main-style.css" rel="stylesheet">
+
+  <!-- Vue JS -->
+  @vite('resources/js/app.js')
+
 </head>
 <body>
     <div id="app">
         
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        @if(Route::current()->getName() != "login") <nav class="navbar navbar-expand-md" >
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="{{ url('/') }}" class="logo d-flex align-items-center">
+                      <img src="../assets/img/socsol-logo.png" alt="">
+                    </a>
+                  </div><!-- End Logo -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -72,9 +79,9 @@
                 </div>
             </div>
             
-        </nav>
+        </nav> @endif
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
