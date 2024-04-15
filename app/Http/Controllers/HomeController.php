@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Models\Clients;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class HomeController extends Controller
@@ -42,18 +43,18 @@ class HomeController extends Controller
     }
 
     public function adminHome() {
-        $clients = Clients::all();
+        $clients = DB::select('select * from clients');
 
-        if($clients ->count() > 0 ) {
+        if(count($clients) > 0 ) {
 
             return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
         } else {
-           /* return response()->json([
+            return response()->json([
                 'status' => 404,
                 'status_message' => 'No Records Found'
-            ], 404);*/
+            ], 404);
 
-            return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
+            //return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
          }
 
 

@@ -369,9 +369,9 @@
                 <thead>
                   <tr>
                     <th scope="col">Client ID#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Assigned SMM</th>
+                    <th scope="col">Plan</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -379,11 +379,19 @@
                 <tbody>
                   <?php $__currentLoopData = $clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <th scope="row"><a href="#"><?php echo e($client->client_id); ?></a></th>
-                    <td><?php echo e($client->client_name); ?></td>
+                    <th scope="row"><?php echo e($client->client_id); ?></th>
+                    <td><a href="#" class="text-primary"><?php echo e($client->client_name); ?></a></td>
                     <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                    <td>$64</td>
-                    <td><span class="badge bg-success">Approved</span></td>
+                    <td>
+                      <?php if($client->plan == 'basic'): ?> 
+                        <span class="badge bg-success">BASIC</span>
+                      <?php elseif($client->plan == 'pro'): ?>
+                        <span class="badge bg-info">PROFESSIONAL</span>
+                      <?php else: ?>
+                      <span class="badge bg-warning">OTHERS</span>
+                      <?php endif; ?>
+                    </td>
+                    <td><span class="badge bg-success">Active</span></td>
                     <td><span class="badge bg-danger"><i class="bi bi-trash"></i></span></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

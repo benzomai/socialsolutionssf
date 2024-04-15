@@ -369,9 +369,9 @@
                 <thead>
                   <tr>
                     <th scope="col">Client ID#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Assigned SMM</th>
+                    <th scope="col">Plan</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -379,11 +379,19 @@
                 <tbody>
                   @foreach ($clients as $client)
                   <tr>
-                    <th scope="row"><a href="#">{{ $client->client_id }}</a></th>
-                    <td>{{ $client->client_name }}</td>
+                    <th scope="row">{{ $client->client_id }}</th>
+                    <td><a href="#" class="text-primary">{{ $client->client_name }}</a></td>
                     <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                    <td>$64</td>
-                    <td><span class="badge bg-success">Approved</span></td>
+                    <td>
+                      @if($client->plan == 'basic') 
+                        <span class="badge bg-success">BASIC</span>
+                      @elseif ($client->plan == 'pro')
+                        <span class="badge bg-info">PROFESSIONAL</span>
+                      @else
+                      <span class="badge bg-warning">OTHERS</span>
+                      @endif
+                    </td>
+                    <td><span class="badge bg-success">Active</span></td>
                     <td><span class="badge bg-danger"><i class="bi bi-trash"></i></span></td>
                   </tr>
                   @endforeach
