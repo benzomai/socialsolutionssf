@@ -62,14 +62,14 @@
         </form>
         </div>
     </div>
-    
-        <div class="toast bg-success text-white" id="toastMessage" role="alert" aria-live="assertive" aria-atomic="true" >
+
+        <div class="toast bg-success text-white" style="position: absolute; top: 20px; right: 20px; z-index: 99;" id="toastMessage" role="alert" aria-live="assertive" aria-atomic="true" >
             <div class="toast-header">
                 <strong class="me-auto">Success</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                Client added successfully!
+                Client added successfully! Please refresh the page to see the update list.
             </div>
         </div>
     
