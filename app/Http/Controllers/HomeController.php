@@ -45,17 +45,15 @@ class HomeController extends Controller
         $clients = Clients::all();
 
         if($clients ->count() > 0 ) {
-            /*return response()->json([
-                'status' => 200,
-                'clients' => $clients
-            ], 200);*/
 
             return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
         } else {
-            return response()->json([
+           /* return response()->json([
                 'status' => 404,
                 'status_message' => 'No Records Found'
-            ], 404);
+            ], 404);*/
+
+            return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
          }
 
 

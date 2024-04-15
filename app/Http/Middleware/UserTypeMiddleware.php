@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
+use App\Casts\UserTypeCaster;   
 use Auth;
 
 class UserTypeMiddleware
@@ -21,7 +22,7 @@ class UserTypeMiddleware
             return $next($request);
         }
         
-        return response()->json(["msg"=> $user_type . " = " . Auth::user()->user_type . " && " . Auth::check() . " You don't have  permission to access this page"]);
+        return response()->json(["msg"=> $user_type . " = " . Auth::user() . " && " . Auth::check() . " You don't have  permission to access this page"]);
 
     }
 }

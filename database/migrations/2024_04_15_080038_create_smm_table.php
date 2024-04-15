@@ -17,8 +17,6 @@ return new class extends Migration
             $table->text('socmed_description');
             $table->string('socmed_status');
             $table->integer('client_swap_count');
-            $table->dateTime('date_created');
-            $table->dateTime('date_updated');
             $table->timestamps();
         });
     }
