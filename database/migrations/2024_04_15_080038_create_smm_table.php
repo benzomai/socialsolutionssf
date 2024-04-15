@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('smm', function (Blueprint $table) {
-            $table->id();
+            $table->id('socmed_id');
+            $table->integer('socmed_user_id');
+            $table->text('socmed_description');
+            $table->string('socmed_status');
+            $table->integer('client_swap_count');
+            $table->dateTime('date_created');
+            $table->dateTime('date_updated');
             $table->timestamps();
         });
     }
