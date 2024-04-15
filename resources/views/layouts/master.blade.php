@@ -233,7 +233,7 @@
                   <i class="bi bi-bag-check"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>145</h6>
+                  <h6>{{ count($clients) }}</h6>
                   <!--<span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
 
                 </div>
@@ -483,14 +483,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      &copy; Copyright <strong><span>Social Solutions</span></strong>. All Rights Reserved
     </div>
   </footer><!-- End Footer -->
 
