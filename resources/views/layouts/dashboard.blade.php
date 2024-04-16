@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('dash')
-<div class="pagetitle">
+@section('content')
+  <div class="pagetitle">
     <h1 class="font-weight">Dashboard @yield('content')</h1>  
     </nav>
   </div><!-- End Page Title -->

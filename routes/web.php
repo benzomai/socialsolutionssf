@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,7 +17,9 @@ Auth::routes();
 Route::middleware(['auth','user_type:admin'])->group(function() {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
     Route::post('/admin/home', [ClientController::class, 'store'])->name('admin.store');
-    //Route::get('/admin/users', [])->('users.admin');
+
+    //Users
+    Route::get('/admin/users', [UsersController::class, 'usersList'])->name('users.admin');
 });
 
 //SMM Role

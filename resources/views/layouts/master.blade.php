@@ -213,7 +213,7 @@
   <!-- MAIN -->
   <main id="main" class="main">
     
-    @yield('dash')
+    @yield('content')
 
   </main><!-- End #main -->
 

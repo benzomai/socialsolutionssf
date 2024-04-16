@@ -213,7 +213,7 @@
   <!-- MAIN -->
   <main id="main" class="main">
     
-    <?php echo $__env->yieldContent('dash'); ?>
+    <?php echo $__env->yieldContent('content'); ?>
 
   </main><!-- End #main -->
 
