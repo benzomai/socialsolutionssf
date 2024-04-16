@@ -17,11 +17,8 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="select" class="form-label">Assigned User</label>
-                            <select class="form-select" v-model="client.assigned_user" id="select" aria-label="Floating label select example">
-                            <option value="0">Zero</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <select class="form-select" v-model.number="client.assigned_user" id="select" aria-label="Floating label select example">
+                                <option v-for="user in users" :key="user.id" :value="user.id" >{{ user.name }}</option>
                             </select>
                         </div>
                         <div class="col">
@@ -41,9 +38,9 @@
                     <div class="mb-3">
                     <label for="select" class="form-label">Plan</label>
                         <select class="form-select" v-model="client.plan" id="select" aria-label="Floating label select example">
-                        <option value="basic">Basic</option>
-                        <option value="pro">Professional</option>
-                        <option value="business">Business</option>
+                            <option value="basic">Basic</option>
+                            <option value="pro">Professional</option>
+                            <option value="business">Business</option>
                         </select>
                     </div>
                     <div class="mb-3" v-if="Object.keys(this.errorList).length > 0">
@@ -62,14 +59,14 @@
         </form>
         </div>
     </div>
-    
-        <div class="toast bg-success text-white" id="toastMessage" role="alert" aria-live="assertive" aria-atomic="true" >
+
+        <div class="toast bg-success text-white" style="position: absolute; top: 20px; right: 20px; z-index: 99;" id="toastMessage" role="alert" aria-live="assertive" aria-atomic="true" >
             <div class="toast-header">
                 <strong class="me-auto">Success</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                Client added successfully!
+                Client added successfully! Please refresh the page to see the update list.
             </div>
         </div>
     
@@ -81,6 +78,8 @@
     
     export default {
         name: 'add-client',
+        props: [ 'users' ],
+
         data() {
             return {
                 // Error list for validation errors
@@ -95,6 +94,9 @@
                 }
             }
         },
+        created() {
+            console.log(this.myData);
+        },
         methods:{
             // Method to create a new client
             create() {
@@ -104,6 +106,7 @@
                 .then(res=>{
                     // Log successful response
                     console.log("Data got through",res);
+                    
                     // Show success toast message
                     var toastEl = document.getElementById('toastMessage');
                     var toast = new bootstrap.Toast(toastEl);
