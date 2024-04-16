@@ -15,11 +15,13 @@ Auth::routes();
 
 //Admin Role
 Route::middleware(['auth','user_type:admin'])->group(function() {
+    //Admin Dashboard
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
     Route::post('/admin/home', [ClientController::class, 'store'])->name('admin.store');
 
-    //Users
+    //Users View
     Route::get('/admin/users', [UsersController::class, 'usersList'])->name('users.admin');
+    Route::post('/admin/users', [UsersController::class, 'store'])->name('users.store');
 });
 
 //SMM Role
