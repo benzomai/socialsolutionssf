@@ -233,7 +233,7 @@
                   <i class="bi bi-bag-check"></i>
                 </div>
                 <div class="ps-3">
-                  <h6><?php echo e(count($clients)); ?></h6>
+                  <?php if($clients == null): ?><h6>0</h6><?php else: ?><h6><?php echo e(count($clients)); ?></h6><?php endif; ?>
                   <!--<span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
 
                 </div>
@@ -356,7 +356,7 @@
           </div>
         </div> -->
 
-        <addclient-modal></addclient-modal>
+        <addclient-modal :users='<?php echo json_encode($users, 15, 512) ?>'></addclient-modal>
 
         <!-- List of Clients Card -->
         <div class="col-7">
@@ -377,6 +377,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php if(count($clients) > 0): ?>
                   <?php $__currentLoopData = $clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
                     <th scope="row"><?php echo e($client->client_id); ?></th>
@@ -395,6 +396,7 @@
                     <td><span class="badge bg-danger"><i class="bi bi-trash"></i></span></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <?php endif; ?>
                 </tbody>
               </table>
 

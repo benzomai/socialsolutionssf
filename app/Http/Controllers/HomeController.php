@@ -44,17 +44,22 @@ class HomeController extends Controller
 
     public function adminHome() {
         $clients = DB::select('select * from clients');
+        $users = DB::select('select * from users where id != ?', [Auth::user()->id]);
 
         if(count($clients) > 0 ) {
 
-            return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
+            return view ("layouts.master", ["msg"=>"I am user role"])
+                ->with('clients', $clients)
+                ->with('users', $users);
         } else {
-            return response()->json([
+            /*return response()->json([
                 'status' => 404,
                 'status_message' => 'No Records Found'
-            ], 404);
+            ], 404);*/
 
-            //return view ("layouts.master", ["msg"=>"I am user role"])->with('clients', $clients);
+            return view ("layouts.master", ["msg"=>"I am user role"])
+                ->with('clients', $clients)
+                ->with('users', $users);
          }
 
 

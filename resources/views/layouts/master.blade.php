@@ -233,7 +233,7 @@
                   <i class="bi bi-bag-check"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>{{ count($clients) }}</h6>
+                  @if($clients == null)<h6>0</h6>@else<h6>{{ count($clients) }}</h6>@endif
                   <!--<span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
 
                 </div>
@@ -356,7 +356,7 @@
           </div>
         </div> -->
 
-        <addclient-modal></addclient-modal>
+        <addclient-modal :users='@json($users)'></addclient-modal>
 
         <!-- List of Clients Card -->
         <div class="col-7">
@@ -377,6 +377,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @if(count($clients) > 0)
                   @foreach ($clients as $client)
                   <tr>
                     <th scope="row">{{ $client->client_id }}</th>
@@ -395,6 +396,7 @@
                     <td><span class="badge bg-danger"><i class="bi bi-trash"></i></span></td>
                   </tr>
                   @endforeach
+                  @endif
                 </tbody>
               </table>
 
