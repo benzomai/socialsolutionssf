@@ -1,4 +1,4 @@
-@extends('master.layouts')
+@extends('layouts.master')
 
 @section('content')
 test ani ahaka wla jud nabuang

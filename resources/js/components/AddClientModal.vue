@@ -17,8 +17,8 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="select" class="form-label">Assigned User</label>
-                            <select class="form-select" v-model="client.assigned_user" id="select" aria-label="Floating label select example">
-                                <option  v-for="user in users" value="{{ user.id }}">{{ user.name }}</option>
+                            <select class="form-select" v-model.number="client.assigned_user" id="select" aria-label="Floating label select example">
+                                <option v-for="user in users" :key="user.id" :value="user.id" >{{ user.name }}</option>
                             </select>
                         </div>
                         <div class="col">

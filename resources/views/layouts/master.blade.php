@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -209,9 +211,9 @@
   <!-- ====== ./end Sidebar =========== -->
 
   <main id="main" class="main">
-
+    
     <div class="pagetitle">
-      <h1 class="font-weight">Dashboard</h1>  
+      <h1 class="font-weight">Dashboard @yield('content')</h1>  
       </nav>
     </div><!-- End Page Title -->
 
