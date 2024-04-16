@@ -16,6 +16,7 @@ Auth::routes();
 Route::middleware(['auth','user_type:admin'])->group(function() {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
     Route::post('/admin/home', [ClientController::class, 'store'])->name('admin.store');
+    //Route::get('/admin/users', [])->('users.admin');
 });
 
 //SMM Role

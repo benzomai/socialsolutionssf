@@ -44,11 +44,11 @@ class HomeController extends Controller
 
     public function adminHome() {
         $clients = DB::select('select * from clients');
-        $users = DB::select('select * from users where id != ?', [Auth::user()->id]);
+        $users = DB::select('SELECT * FROM users INNER JOIN clients ON users.id = clients.assigned_user WHERE clients.assigned_user != ? ', [Auth::user()->id]);
 
         if(count($clients) > 0 ) {
 
-            return view ("layouts.master", ["msg"=>"I am user role"])
+            return View::make('layouts.dashboard')
                 ->with('clients', $clients)
                 ->with('users', $users);
         } else {
@@ -57,7 +57,7 @@ class HomeController extends Controller
                 'status_message' => 'No Records Found'
             ], 404);*/
 
-            return view ("layouts.master", ["msg"=>"I am user role"])
+            return View::make('layouts.dashboard')
                 ->with('clients', $clients)
                 ->with('users', $users);
          }
