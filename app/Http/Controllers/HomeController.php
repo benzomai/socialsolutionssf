@@ -44,7 +44,7 @@ class HomeController extends Controller
 
     public function adminHome() {
         $clients = DB::select('select * from clients');
-        $users = DB::select('SELECT * FROM users INNER JOIN clients ON users.id = clients.assigned_user WHERE clients.assigned_user != ? ', [Auth::user()->id]);
+        $users = DB::select('SELECT users.id, users.name FROM users LEFT JOIN clients ON users.id = clients.assigned_user WHERE clients.assigned_user IS NULL AND users.id != ? AND users.user_type = 2', [Auth::user()->id]);
 
         if(count($clients) > 0 ) {
 

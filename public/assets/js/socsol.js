@@ -8,8 +8,6 @@
     //deleting user
     $('#deleteUser').submit(function () {
 
-
-
         if ($('#confirmDelete').val() == "DELETE") {
             $('.unconfirm-delete').addAttr('hidden');
             //toast
@@ -18,7 +16,7 @@
             $("#toastBody").text("User successfully delete!");
             $("#toastAlert").toast('show');
 
-            window.setTimeout(800);
+            window.setTimeout(1200);
             
             return true;
         } else {
