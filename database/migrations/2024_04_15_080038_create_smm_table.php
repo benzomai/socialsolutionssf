@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('smm', function (Blueprint $table) {
             $table->id('socmed_id');
             $table->integer('socmed_user_id');
-            $table->text('socmed_description');
-            $table->string('socmed_status');
-            $table->integer('client_swap_count');
+            $table->text('socmed_description')->nullable();
+            $table->string('socmed_status')->default('active');
+            $table->integer('client_swap_count')->default(0);
             $table->timestamps();
         });
     }

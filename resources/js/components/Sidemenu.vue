@@ -15,7 +15,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="/admin/home">
+        <a class="nav-link collapsed" href="/admin/home">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -40,18 +40,21 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="/admin/users">
+        <a class="nav-link collapsed" href="/admin/users">
           <i class="bi bi-people"></i>
           <span>Users</span>
         </a>
       </li><!-- End User Nav -->
 
+
+      
       <li class="nav-item">
-        <a class="nav-link " href="/admin/smm">
+        <a class="nav-link collapsed" href="/admin/smm">
           <i class="bi bi-people"></i>
-          <span>Users</span>
+          <span>Social Media Managers</span>
         </a>
       </li><!-- End SMM Nav -->
+      
 
     </ul>
 

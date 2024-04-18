@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use App\Models\Clients;
 use App\Models\User;
+use App\Models\SMM;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -53,6 +54,18 @@ class UsersController extends Controller
                 'email' => $request->email,
                 'password' => bcrypt($request->password)
             ]);
+
+            if($request->user_type == 1) {
+                $smmUser = DB::table('users')->latest('created_at')->first();
+
+                $smmAdd = SMM::create([
+                    'socmed_user_id' => $smmUser->id,
+                    'socmed_description' => 'No description',
+                    'socmed_status' => 'active',
+                    'client_swap_count' => 0
+                ]);
+
+            }
             
             /*return response()->json([
                 'status' => 200,
