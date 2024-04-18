@@ -46,6 +46,13 @@
         </a>
       </li><!-- End User Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link " href="/admin/smm">
+          <i class="bi bi-people"></i>
+          <span>Users</span>
+        </a>
+      </li><!-- End SMM Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->
