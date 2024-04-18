@@ -49,10 +49,11 @@ class UsersController extends Controller
         } else {
             $client = User::create([
                 'name' => $request->name,
-                'user_type' => (int)$request->user_type,
+                'user_type' => $request->user_type,
                 'email' => $request->email,
                 'password' => bcrypt($request->password)
             ]);
+            
             /*return response()->json([
                 'status' => 200,
                 'message' => $request->all()

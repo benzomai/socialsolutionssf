@@ -16,9 +16,8 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
-
     protected $fillable = [
         'name',
         'email',
@@ -29,7 +28,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -37,22 +36,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'user_type' => UserTypeCaster::class,
-            'password' => 'hashed',
-        ];
-    }
-
-    protected function user_type(): Attribute {
-        return new Attribute(
-            get:fn($value)=>['admin','smm','client'][$value]
-        );
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'user_type' => UserTypeCaster::class,
+        'password' => 'hashed',
+    ];
 }
