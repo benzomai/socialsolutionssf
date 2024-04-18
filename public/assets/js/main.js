@@ -1,9 +1,4 @@
-/**
-* Template Name: NiceAdmin
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 window.onload = function() {
   "use strict";
 
@@ -18,6 +13,8 @@ window.onload = function() {
       return document.querySelector(el)
     }
   }
+
+
 
   /**
    * Easy event listener function

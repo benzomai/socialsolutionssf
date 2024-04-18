@@ -53,9 +53,13 @@ class UsersController extends Controller
                 'email' => $request->email,
                 'password' => bcrypt($request->password)
             ]);
+            /*return response()->json([
+                'status' => 200,
+                'message' => $request->all()
+            ], 200);*/
 
             if($client) {
-                return redirect()->route('home.admin');
+                //return redirect()->route('home.admin');
                 //return view ("layouts.master", ["msg"=>"I am smm role"]);
                 /*return response()->json([
                     'status' => 200,
@@ -70,17 +74,17 @@ class UsersController extends Controller
         }
     }
 
-    public function destroy($id) {
-        $client = User::find($id);
+    public function destroy(Request $request) {
+        $user = User::find($request->id);
+        
 
-        if($client) {
+        if($user && Auth::check()) {
 
-            $client->delete();
-
-            /*return response()->json([
-                'status' => 200,
-                'message' => "Client:" . $client_id . "Deleted Successfully"
-            ], 200);*/
+            $user->delete();
+            $users = DB::select('SELECT * FROM users');
+            
+            return View::make('layouts.users')
+                ->with('users', $users);
 
         } else {
             return response()->json([

@@ -23,12 +23,16 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 import Sidemenu from './components/Sidemenu.vue';
 import AddClientModal from './components/AddClientModal.vue';
+
 import AddUserModal from './components/AddUserModal.vue';
+import DeleteUserModal from './components/DeleteUserModal.vue';
 
 app.component('example-component', ExampleComponent);
 app.component('sidebar-menu', Sidemenu);
 app.component('addclient-modal', AddClientModal);
 app.component('adduser-modal', AddUserModal);
+app.component('deleteuser-modal', DeleteUserModal);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

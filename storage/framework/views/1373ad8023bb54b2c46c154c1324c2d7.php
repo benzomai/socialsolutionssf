@@ -233,6 +233,7 @@
 
 
   <!-- Vendor JS Files -->
+  <script src="../assets/js/jquery-3.7.1.min.js"></script>
   <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="../assets/vendor/chart.js/chart.umd.js"></script>
   <script src="../assets/vendor/echarts/echarts.min.js"></script>
@@ -243,6 +244,7 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/socsol.js"></script>
 
 
 </html><?php /**PATH C:\xampp\htdocs\socialsols_github\socialsolutionssf\resources\views/layouts/master.blade.php ENDPATH**/ ?>

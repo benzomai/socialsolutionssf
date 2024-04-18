@@ -22,6 +22,7 @@ Route::middleware(['auth','user_type:admin'])->group(function() {
     //Users View
     Route::get('/admin/users', [UsersController::class, 'usersList'])->name('users.admin');
     Route::post('/admin/users', [UsersController::class, 'store'])->name('users.store');
+    Route::post('/admin/users', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
 //SMM Role

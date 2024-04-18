@@ -4,8 +4,54 @@
 
 <adduser-modal></adduser-modal>
 
+<!-- Delete a User Modal -->
+<div class="modal fade" id="deleteUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete User</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+           
+            <form id="deleteUser" action="{{ route('users.destroy', 'id') }}" method="post">
+                
+                @csrf
+                <input id="id" name="id" hidden>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <h3>Are you sure you want to delete  ?</h3>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Enter <span class="text-danger">"DELETE"</span> below to confirm</label>
+                    <input type="text" id="confirmDelete" name="confirmation" class="form-control">
+                    <div class="text-danger unconfirm-delete" hidden>
+                      Please enter "DELETE" correctly.
+                    </div>
+                </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast text-white" style="position: absolute; top: 20px; right: 20px; z-index: 9999;" id="toastAlert" role="alert" aria-live="assertive" aria-atomic="true" >
+  <div class="toast-header">
+      <strong id="toastHeader" class="me-auto"></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+      <span id="toastBody"></span>
+  </div>
+</div>
+
   <div class="pagetitle">
-    <h1 class="font-weight">Users List @yield('content')</h1>  
+    <h1 class="font-weight">Users List</h1>  
     </nav>
   </div><!-- End Page Title -->
 
@@ -31,27 +77,32 @@
                   </thead>
                   <tbody>
                     @if(count($users) > 0)
-                    @foreach ($users as $user)
-                    <tr>
-                      <th scope="row">{{ $user->id }}</th>
-                      <td><a href="#" class="text-primary">{{ $user->name }}</a></td>
-                      <td>
-                        @if($user->user_type == '0') 
-                          ADMIN
-                        @elseif ($user->user_type == '1')
-                          SMM
-                        @elseif ($user->user_type == '2')
-                            CLIENT
-                        @else
-                            UNASSIGNED
-                        @endif
-                      </td>
-                      <td>{{$user->email}}</td>
-                      <td>{{$user->created_at}}</td>
-                      <td>{{$user->updated_at}}</td>
-                      <td><span class="badge bg-warning pe-auto" role="button"><i class="bi bi-pencil-square"></i></span> &nbsp; <span class="badge bg-danger pe-auto" role="button"><i class="bi bi-trash"></i></span></td>
-                    </tr>
-                    @endforeach
+                        @foreach ($users as $user)
+                        <tr>
+                        <th scope="row">{{ $user->id }}</th>
+                        <td><a href="#" class="text-primary">{{ $user->name }}</a></td>
+                        <td>
+                            @if($user->user_type == '0') 
+                            ADMIN
+                            @elseif ($user->user_type == '1')
+                            SMM
+                            @elseif ($user->user_type == '2')
+                                CLIENT
+                            @else
+                                UNASSIGNED
+                            @endif
+                        </td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->created_at}}</td>
+                        <td>{{$user->updated_at}}</td>
+                        <td><span class="badge bg-warning" role="button"><i class="bi bi-pencil-square"></i></span> &nbsp; 
+                            <span class="badge bg-danger delete" 
+                                  role="button" 
+                                  data-bs-toggle="modal" 
+                                data-bs-target="#deleteUser"
+                                data-id="{{$user->id}}"><i class="bi bi-trash"></i></span></td>
+                        </tr>
+                        @endforeach
                     @endif
                   </tbody>
                 </table>
