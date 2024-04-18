@@ -54,7 +54,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <!--<input type="submit" class="btn btn-success" value="Add Client" />-->
-                <button type="button" @click="create" id="close" class="btn btn-primary">Create</button>
+                <button type="button" @click="create" id="close" class="btn btn-success"><i class="bi bi-add-user"></i> Create Client</button>
             </div>
         </form>
         </div>

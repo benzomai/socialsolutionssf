@@ -9,9 +9,9 @@
         <div class="modal-dialog">
 
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete User</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-danger">
+                <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Delete User</h1>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            
             <form id="deleteUser" action="{{ route('users.destroy', 'id') }}" method="post">
@@ -20,7 +20,8 @@
                 <input id="id" name="id" hidden>
             <div class="modal-body">
                 <div class="mb-3">
-                    <h3>Are you sure you want to delete  ?</h3>
+                    <h3 class="text-danger">Are you sure you want to delete <span id="user-name"></span>?</h3>
+                    <p class="text-danger">This will also delete it's data if this user is a client.</p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Enter <span class="text-danger">"DELETE"</span> below to confirm</label>
@@ -32,7 +33,7 @@
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
             </div>
         </form>
         </div>
@@ -100,7 +101,8 @@
                                   role="button" 
                                   data-bs-toggle="modal" 
                                 data-bs-target="#deleteUser"
-                                data-id="{{$user->id}}"><i class="bi bi-trash"></i></span></td>
+                                data-id="{{$user->id}}"
+                                data-name="{{$user->name}}"><i class="bi bi-trash"></i></span></td>
                         </tr>
                         @endforeach
                     @endif

@@ -2,6 +2,8 @@
     //passing data from row to modal to delete
     $(".delete").on('click',function(){
         let id = $(this).attr('data-id');
+        let name = $(this).attr('data-name');
+        $('#user-name').text(name);
         $('#id').val(id);
       });
 
