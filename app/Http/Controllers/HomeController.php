@@ -43,14 +43,16 @@ class HomeController extends Controller
     }
 
     public function adminHome() {
-        $clients = DB::select('select * from clients');
+        $clients = DB::select('SELECT * FROM clients INNER JOIN smm ON clients.assign_smm = smm.socmed_id INNER JOIN users ON smm.socmed_user_id = users.id');
         $users = DB::select('SELECT users.id, users.name FROM users LEFT JOIN clients ON users.id = clients.assigned_user WHERE clients.assigned_user IS NULL AND users.id != ? AND users.user_type = 2', [Auth::user()->id]);
+        $smm = DB::select('SELECT smm.socmed_id, users.name FROM smm LEFT JOIN users ON smm.socmed_user_id = users.id WHERE smm.socmed_id NOT IN(SELECT clients.assign_smm FROM clients)');
 
         if(count($clients) > 0 ) {
 
             return View::make('layouts.dashboard')
                 ->with('clients', $clients)
-                ->with('users', $users);
+                ->with('users', $users)
+                ->with('smm', $smm);
         } else {
             /*return response()->json([
                 'status' => 404,
@@ -59,7 +61,8 @@ class HomeController extends Controller
 
             return View::make('layouts.dashboard')
                 ->with('clients', $clients)
-                ->with('users', $users);
+                ->with('users', $users)
+                ->with('smm', $smm);
          }
 
 
