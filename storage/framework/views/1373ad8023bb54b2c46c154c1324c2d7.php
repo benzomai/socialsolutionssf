@@ -12,8 +12,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?php echo e(asset('img/socsal-favicon.webp')); ?>" rel="icon">
-  <link href="<?php echo e(asset('img/socsal-favicon.webp')); ?>" rel="apple-touch-icon">
+  <link href="<?php echo e(asset('/assets/img/socsal-favicon.webp')); ?>" rel="icon">
+  <link href="<?php echo e(asset('/assets/img/socsal-favicon.webp')); ?>" rel="apple-touch-icon">
 
   <!-- Vue JS -->
   <?php echo app('Illuminate\Foundation\Vite')('resources/js/app.js'); ?>

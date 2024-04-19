@@ -1,12 +1,14 @@
 
+//loader
 $(window).on('load', function(){
     setTimeout(removeLoader, 0); //wait for page load PLUS two seconds.
     });
     function removeLoader(){
-        $( "#loadingDiv" ).fadeOut(400, function() {
+        $( "#loadingDiv" ).fadeOut(200, function() {
         // fadeOut complete. Remove the loading div
         $( "#loadingDiv" ).remove(); //makes page more lightweight 
     });  
+
 }
 
 
@@ -14,6 +16,14 @@ $(document).ready(function(){
 
     var clientTable = new DataTable('#clientTable');
     var userTable = new DataTable('#userTable');
+
+
+    //active submenu
+    $(function($){
+        $('.nav-item a').filter(function(){
+           return $(this).attr('href').toLowerCase() === window.location.pathname.toLowerCase();
+        }).removeClass('collapsed');
+    });
         
     
     //passing data from row to modal to delete

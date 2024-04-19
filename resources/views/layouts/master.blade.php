@@ -12,8 +12,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('img/socsal-favicon.webp') }}" rel="icon">
-  <link href="{{ asset('img/socsal-favicon.webp') }}" rel="apple-touch-icon">
+  <link href="{{ asset('/assets/img/socsal-favicon.webp') }}" rel="icon">
+  <link href="{{ asset('/assets/img/socsal-favicon.webp') }}" rel="apple-touch-icon">
 
   <!-- Vue JS -->
   @vite('resources/js/app.js')
