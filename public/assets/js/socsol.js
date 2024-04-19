@@ -1,7 +1,5 @@
 
- 
- 
- $(document).ready(function(){   
+$(document).ready(function(){   
          
     $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
     $(window).on('load', function(){
@@ -45,6 +43,17 @@
             console.log("Nope!");
             return false;
         }
+    });
+
+    //updating SMM
+    var table = new DataTable('#smmTable');
+
+    $('#smmTable').on('click', 'tr', '.updateBtn', function() {
+
+        console.log(table.row(this).data()[0]);
+
+        $('#updateSmmID').text(table.row(this).data()[0]);
+        $('#updateInputName').val(table.row(this).data()[1])
     });
 
 });

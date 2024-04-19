@@ -28,6 +28,7 @@ Route::middleware(['auth','user_type:admin'])->group(function() {
     //SMM View
     Route::get('/admin/smm', [SmmController::class, 'smmList'])->name('smm.admin');
     Route::post('/admin/smm', [SmmController::class, 'destroy'])->name('smm.destroy');
+    Route::put('/admin/smm', [SmmController::class, 'update'])->name('smm.update');
 });
 
 //SMM Role

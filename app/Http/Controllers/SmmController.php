@@ -54,4 +54,8 @@ class SmmController extends Controller
             ], 404);
         }
     }
+
+    public function update(Request $request) {
+        
+    }
 }
