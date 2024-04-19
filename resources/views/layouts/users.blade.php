@@ -64,7 +64,7 @@
               <div class="card-body">
                 <h5 class="card-title">Users <!--<span>| Today</span>--> &nbsp; <button type="button" class="btn waves-effect waves-light btn-success" data-bs-toggle="modal" data-bs-target="#addUser"><i class="bi bi-plus"></i>Add New User</button></h5> 
                   
-                <table class="table table-borderless datatable">
+                <table id="userTable" class="table table-borderless datatable">
                   <thead>
                     <tr>
                       <th scope="col">User ID#</th>

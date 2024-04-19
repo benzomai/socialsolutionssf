@@ -1,17 +1,21 @@
 
-$(document).ready(function(){   
-         
-    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
-    $(window).on('load', function(){
-    setTimeout(removeLoader, 100); //wait for page load PLUS two seconds.
+$(window).on('load', function(){
+    setTimeout(removeLoader, 0); //wait for page load PLUS two seconds.
     });
     function removeLoader(){
-        $( "#loadingDiv" ).fadeOut(800, function() {
+        $( "#loadingDiv" ).fadeOut(400, function() {
         // fadeOut complete. Remove the loading div
         $( "#loadingDiv" ).remove(); //makes page more lightweight 
     });  
-    }
+}
 
+
+$(document).ready(function(){   
+
+    var clientTable = new DataTable('#clientTable');
+    var userTable = new DataTable('#userTable');
+        
+    
     //passing data from row to modal to delete
     $(".delete").on('click',function(){
         let id = $(this).attr('data-id');
@@ -46,14 +50,13 @@ $(document).ready(function(){
     });
 
     //updating SMM
-    var table = new DataTable('#smmTable');
+    var smmTable = new DataTable('#smmTable');
 
     $('#smmTable').on('click', 'tr', '.updateBtn', function() {
 
-        console.log(table.row(this).data()[0]);
+        $('#updateSmmID').text(smmTable .row(this).data()[0]);
+        $('#updateInputName').val(smmTable .row(this).data()[1])
 
-        $('#updateSmmID').text(table.row(this).data()[0]);
-        $('#updateInputName').val(table.row(this).data()[1])
     });
 
 });

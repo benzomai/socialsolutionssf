@@ -12,8 +12,11 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/socsal-favicon.webp" rel="icon">
-  <link href="../assets/img/socsal-favicon.webp" rel="apple-touch-icon">
+  <link href="<?php echo e(asset('img/socsal-favicon.webp')); ?>" rel="icon">
+  <link href="<?php echo e(asset('img/socsal-favicon.webp')); ?>" rel="apple-touch-icon">
+
+  <!-- Vue JS -->
+  <?php echo app('Illuminate\Foundation\Vite')('resources/js/app.js'); ?>
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,17 +32,14 @@
   <!-- <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet"> -->
   <link href="../assets/vendor/datatables/datatables.min.css" rel="stylesheet">
 
- <!-- Template Main CSS File -->
- <link href="../assets/css/style.css" rel="stylesheet">
- <link href="../assets/css/main-style.css" rel="stylesheet">
-
-  <!-- Vue JS -->
-  <?php echo app('Illuminate\Foundation\Vite')('resources/js/app.js'); ?>
-
-
 </head>
 
 <body>
+  <!-- Loader -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:white; z-index: 9999 !important;" id="loadingDiv">
+    <div class="loader"></div>
+  </div>
+
 <div id=app>
   <!-- Scripts -->
 
@@ -234,19 +234,14 @@
 
 
   <!-- Vendor JS Files -->
-  <script src="../assets/js/jquery-3.7.1.min.js"></script>
   <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="../assets/vendor/chart.js/chart.umd.js"></script>
   <script src="../assets/vendor/echarts/echarts.min.js"></script>
   <script src="../assets/vendor/quill/quill.min.js"></script>
   <!--<script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>-->
-  <script src="../assets/vendor/datatables/datatables.min.js"></script>
   <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/socsol.js"></script>
 
 
 </html><?php /**PATH C:\xampp\htdocs\socialsols_github\socialsolutionssf\resources\views/layouts/master.blade.php ENDPATH**/ ?>

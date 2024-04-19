@@ -156,7 +156,7 @@
           <div class="card-body">
             <h5 class="card-title">Clients <!--<span>| Today</span>--> &nbsp; <button type="button" class="btn waves-effect waves-light btn-success" data-bs-toggle="modal" data-bs-target="#addClient"><i class="bi bi-plus"></i>Add New Client</button></h5> 
               
-            <table class="table table-borderless datatable">
+            <table id="clientTable" class="table table-borderless datatable">
               <thead>
                 <tr>
                   <th scope="col">Client ID#</th>

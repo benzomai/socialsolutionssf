@@ -4,6 +4,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import '/public/assets/css/main-style.css';
+import '/public/assets/css/style.css';
+
+
+import '/public/assets/js/jquery-3.7.1.min.js';
+import '/public/assets/js/main.js';
+import '/public/assets/js/socsol.js';
+import '/public/assets/vendor/datatables/datatables.min.js';
+
+
 import '/public/assets/vendor/bootstrap/css/bootstrap.min.css';
 import '/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js';
 
