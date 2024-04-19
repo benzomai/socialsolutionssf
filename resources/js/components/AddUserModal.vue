@@ -30,10 +30,6 @@
                         <option value="2">Client</option>
                         </select>
                 </div>
-                <div class="mb-3" v-if="user.user_type === 1">
-                    <label class="form-label">SMM Description</label>
-                    <textarea v-model="user.description" class="form-control"></textarea>
-                </div>
                 <div class="mb-3" v-if="Object.keys(this.errorList).length > 0">
                     <div class="alert alert-danger" role="alert">
                         <ul>

@@ -1,4 +1,19 @@
+
+ 
+ 
  $(document).ready(function(){   
+         
+    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+    $(window).on('load', function(){
+    setTimeout(removeLoader, 100); //wait for page load PLUS two seconds.
+    });
+    function removeLoader(){
+        $( "#loadingDiv" ).fadeOut(800, function() {
+        // fadeOut complete. Remove the loading div
+        $( "#loadingDiv" ).remove(); //makes page more lightweight 
+    });  
+    }
+
     //passing data from row to modal to delete
     $(".delete").on('click',function(){
         let id = $(this).attr('data-id');

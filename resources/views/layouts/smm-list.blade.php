@@ -4,24 +4,24 @@
 
 <adduser-modal></adduser-modal>
 
-<!-- Delete a User Modal -->
+<!-- Delete a SMM modal -->
 <div class="modal fade" id="deleteUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
 
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Delete User</h1>
+                <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Delete SMM</h1>
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            
-            <form id="deleteUser" action="{{ route('users.destroy', 'id') }}" method="post">
+            <form id="deleteUser" action="{{ route('smm.destroy', 'id') }}" method="post">
                 
                 @csrf
                 <input id="id" name="id" hidden>
             <div class="modal-body">
                 <div class="mb-3">
                     <h3 class="text-danger">Are you sure you want to delete <span id="user-name"></span>?</h3>
-                    <p class="text-danger">This will also delete it's data if this user is a client.</p>
+                    <p class="text-danger">This will also delete all SMM data</p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Enter <span class="text-danger">"DELETE"</span> below to confirm</label>
@@ -67,9 +67,9 @@
                 <table class="table table-borderless datatable">
                   <thead>
                     <tr>
-                      <th scope="col">User ID#</th>
+                      <th scope="col">SMM ID#</th>
                       <th scope="col">Name</th>
-                      <th scope="col">User Type</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Email</th>
                       <th scope="col">Date Created</th>
                       <th scope="col">Date Updated</th>
@@ -77,32 +77,24 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @if(count($users) > 0)
-                        @foreach ($users as $user)
+                    @if($smm)
+                        @foreach ($smm as $socmed)
                         <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td><a href="#" class="text-primary">{{ $user->name }}</a></td>
+                        <th scope="row">{{ $socmed->socmed_id }}</th>
+                        <td><a href="#" class="text-primary">{{ $socmed->name }}</a></td>
                         <td>
-                            @if($user->user_type == '0') 
-                            ADMIN
-                            @elseif ($user->user_type == '1')
-                            SMM
-                            @elseif ($user->user_type == '2')
-                                CLIENT
-                            @else
-                                UNASSIGNED
-                            @endif
+                            {{$socmed->socmed_status}}
                         </td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->created_at}}</td>
-                        <td>{{$user->updated_at}}</td>
+                        <td>{{$socmed->email}}</td>
+                        <td>{{$socmed->created_at}}</td>
+                        <td>{{$socmed->updated_at}}</td>
                         <td><span class="badge bg-warning" role="button"><i class="bi bi-pencil-square"></i></span> &nbsp; 
                             <span class="badge bg-danger delete" 
                                   role="button" 
                                   data-bs-toggle="modal" 
                                 data-bs-target="#deleteUser"
-                                data-id="{{$user->id}}"
-                                data-name="{{$user->name}}"><i class="bi bi-trash"></i></span></td>
+                                data-id="{{$socmed->id}}"
+                                data-name="{{$socmed->name}}"><i class="bi bi-trash"></i></span></td>
                         </tr>
                         @endforeach
                     @endif

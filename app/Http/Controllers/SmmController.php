@@ -16,12 +16,12 @@ use Auth;
 class SmmController extends Controller
 {
     public function smmList() {
-        $smm = DB::select('SELECT * FROM smm');
+        $smm = DB::select('SELECT * FROM smm INNER JOIN users ON smm.socmed_user_id = users.id');
 
-        if(count($smm) > 0 ) {
+        if($smm) {
 
             return View::make('layouts.smm-list')
-                ->with('users', $smm);
+                ->with('smm', $smm);
         } else {
             /*return response()->json([
                 'status' => 404,
@@ -29,7 +29,29 @@ class SmmController extends Controller
             ], 404);*/
 
             return View::make('layouts.smm-list')
-                ->with('users', $smm);
+                ->with('smm', $smm);
          }
+    }
+
+    public function destroy(Request $request) {
+        $user = User::find($request->id);
+        
+
+        if($user && Auth::check()) {
+
+            $user->delete();
+            DB::table('smm')->where('socmed_user_id','=',$request->id)->delete();
+
+            $smm = DB::select('SELECT * FROM smm');
+            
+            return View::make('layouts.smm-list')
+                ->with('smm', $smm);
+
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => "No such client!"
+            ], 404);
+        }
     }
 }

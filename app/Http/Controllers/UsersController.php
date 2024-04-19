@@ -65,26 +65,28 @@ class UsersController extends Controller
                     'client_swap_count' => 0
                 ]);
 
-            }
-            
-            /*return response()->json([
+            } else {
+
+                /*return response()->json([
                 'status' => 200,
                 'message' => $request->all()
-            ], 200);*/
-
-            if($client) {
-                //return redirect()->route('home.admin');
-                //return view ("layouts.master", ["msg"=>"I am smm role"]);
-                /*return response()->json([
-                    'status' => 200,
-                    'message' => "Client Created Successfully"
                 ], 200);*/
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Something went wrong"
-                ], 500);
-            }
+
+                if($client) {
+                    //return redirect()->route('home.admin');
+                    //return view ("layouts.master", ["msg"=>"I am smm role"]);
+                    /*return response()->json([
+                        'status' => 200,
+                        'message' => "Client Created Successfully"
+                    ], 200);*/
+                } else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => "Something went wrong"
+                    ], 500);
+                }
+
+            }    
         }
     }
 
