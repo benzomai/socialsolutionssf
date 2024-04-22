@@ -8,13 +8,15 @@
 <div class="modal fade" id="updateUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel">
   <div class="modal-dialog">
     <div class="modal-content">
+      <form action="{{ route('smm.update') }}" method="post">
         <div class="modal-header bg-warning">
             <h1 class="modal-title fs-5">Update SMM: ID <span id="updateSmmID"></span></h1>
             <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="updateSmm" action="" method="put">
+
             @csrf
+            <input type="text" name="updateSmmIDInput" id="updateSmmIDInput" hidden>
           <div class="mb-3">
               <label for="updateInputName" class="form-label">Name</label>
               <input type="text" class="form-control" name="updateName" id="updateInputName">
@@ -23,7 +25,27 @@
                 <label for="updateInputEmail" class="form-label">Email Address</label>
                 <input type="email" class="form-control" name="updateEmail" id="updateInputEmail" aria-describedby="emailHelp">
             </div>
-
+            <div class="mb-3">
+              <label for="updateInputName" class="form-label">New Password</label>
+              <input type="password" class="form-control" name="updatePassword" id="updatePassword">
+              <small id="emailHelp" class="form-text text-muted">Leave blank if you don't want to change this user's password</small>
+            </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-6">
+                  <label>Status</label>
+                  <select class="form-control" id="updateStatus" name="updateStatus">
+                    <option value="active">ACTIVE</option>
+                    <option value="vacation">VACATION</option>
+                    <option value="inactive">INACTIVE</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label>Swap Count</label>
+                  <input type="number" class="form-control" id="swapcount" name="swapcount">
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -39,6 +61,7 @@
         <div class="modal-dialog">
 
         <div class="modal-content">
+          <form id="deleteUser" action="{{ route('smm.destroy') }}" method="post">
             <div class="modal-header bg-danger">
                 <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Delete SMM</h1>
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -46,7 +69,7 @@
            
             
             <div class="modal-body">
-              <form id="deleteUser" action="{{ route('smm.destroy', 'id') }}" method="post">
+              
                 
                 @csrf
                 <input id="id" name="id" hidden>
@@ -86,8 +109,29 @@
     <h1 class="font-weight">Social Media Manager List</h1>  
     </nav>
   </div><!-- End Page Title -->
-
   <section class="section">
+
+    @if(session()->get('message') == "update")
+      <div class="alert alert-success">
+          SMM Successfully Updated
+      </div>
+    @elseif(session()->get('message') == "delete")
+    <div class="alert alert-danger">
+        SMM Successfully Deleted
+    </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+          <h5>Update SMM Failed</h5>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-12">
             <div class="card recent-sales overflow-auto">
@@ -102,6 +146,7 @@
                       <th scope="col">Name</th>
                       <th scope="col">Status</th>
                       <th scope="col">Email</th>
+                      <th scope="col">Swap Count</th>
                       <th scope="col">Date Created</th>
                       <th scope="col">Date Updated</th>
                       <th scope="col">Action</th>
@@ -114,9 +159,13 @@
                         <th scope="row">{{ $socmed->socmed_id }}</th>
                         <td>{{ $socmed->name }}</td>
                         <td>
-                            {{$socmed->socmed_status}}
+                            <span class="badge 
+                            @if($socmed->socmed_status == 'active') bg-success
+                            @elseif($socmed->socmed_status == 'vacation') bg-info
+                            @else bg-danger @endif">{{$socmed->socmed_status}}</span>
                         </td>
                         <td>{{$socmed->email}}</td>
+                        <td>{{$socmed->client_swap_count}}</td>
                         <td>{{$socmed->created_at}}</td>
                         <td>{{$socmed->updated_at}}</td>
                         <td><span class="badge bg-warning updateBtn" 

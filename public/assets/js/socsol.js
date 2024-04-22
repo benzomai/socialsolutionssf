@@ -64,8 +64,21 @@ $(document).ready(function(){
 
     $('#smmTable').on('click', 'tr', '.updateBtn', function() {
 
-        $('#updateSmmID').text(smmTable .row(this).data()[0]);
-        $('#updateInputName').val(smmTable .row(this).data()[1])
+        var status = smmTable.row(this).data()[2];
+
+        $('#updateSmmID').text(smmTable.row(this).data()[0]);
+        $('#updateSmmIDInput').val(smmTable.row(this).data()[0]);
+        $('#updateInputName').val(smmTable.row(this).data()[1]);
+        $('#updateInputEmail').val(smmTable.row(this).data()[3]);
+        $('#swapcount').val(smmTable.row(this).data()[4]);
+
+        if($(status).text() == "active") {
+            $('#updateStatus').val("active").change();
+        } else if($(status).text() == "vacation") {
+            $('#updateStatus').val("vacation").change();
+        } else {
+            $('#updateStatus').val("inactive").change();
+        }
 
     });
 
