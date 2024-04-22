@@ -147,7 +147,7 @@
         </div>
       </div> -->
 
-      <addclient-modal :users='@json($users)'></addclient-modal>
+      <addclient-modal :users='@json($users)' :smm='@json($smm)'></addclient-modal>
 
       <!-- List of Clients Card -->
       <div class="col-7">
@@ -156,7 +156,7 @@
           <div class="card-body">
             <h5 class="card-title">Clients <!--<span>| Today</span>--> &nbsp; <button type="button" class="btn waves-effect waves-light btn-success" data-bs-toggle="modal" data-bs-target="#addClient"><i class="bi bi-plus"></i>Add New Client</button></h5> 
               
-            <table class="table table-borderless datatable">
+            <table id="clientTable" class="table table-borderless datatable">
               <thead>
                 <tr>
                   <th scope="col">Client ID#</th>
@@ -173,7 +173,7 @@
                 <tr>
                   <th scope="row">{{ $client->client_id }}</th>
                   <td><a href="#" class="text-primary">{{ $client->client_name }}</a></td>
-                  <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                  <td><a href="#" class="text-primary">{{ $client->name }}</a></td>
                   <td>
                     @if($client->plan == 'basic') 
                       <span class="badge bg-success">BASIC</span>

@@ -1,9 +1,4 @@
-/**
-* Template Name: NiceAdmin
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 window.onload = function() {
   "use strict";
 
@@ -18,6 +13,8 @@ window.onload = function() {
       return document.querySelector(el)
     }
   }
+
+
 
   /**
    * Easy event listener function
@@ -298,26 +295,7 @@ window.onload = function() {
   /**
    * Initiate Datatables
    */
-  const datatables = select('.datatable', true)
-  datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable, {
-      perPageSelect: [5, 10, 15, ["All", -1]],
-      columns: [{
-          select: 2,
-          sortSequence: ["desc", "asc"]
-        },
-        {
-          select: 3,
-          sortSequence: ["desc"]
-        },
-        {
-          select: 4,
-          cellClass: "green",
-          headerClass: "red"
-        }
-      ]
-    });
-  })
+  
 
   /**
    * Autoresize echart charts

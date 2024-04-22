@@ -4,8 +4,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import '/public/assets/vendor/bootstrap/css/bootstrap.min.css';
+import '/public/assets/css/main-style.css';
+import '/public/assets/css/style.css';
+
+import '/public/assets/js/jquery-3.7.1.min.js';
+import '/public/assets/js/main.js';
+import '/public/assets/js/socsol.js';
+import '/public/assets/vendor/datatables/datatables.min.js';
+
 import '/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js';
+import '/public/assets/vendor/bootstrap/css/bootstrap.min.css';
 
 import { createApp } from 'vue';
 
@@ -24,9 +32,14 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import Sidemenu from './components/Sidemenu.vue';
 import AddClientModal from './components/AddClientModal.vue';
 
+import AddUserModal from './components/AddUserModal.vue';
+import DeleteUserModal from './components/DeleteUserModal.vue';
+
 app.component('example-component', ExampleComponent);
 app.component('sidebar-menu', Sidemenu);
 app.component('addclient-modal', AddClientModal);
+app.component('adduser-modal', AddUserModal);
+app.component('deleteuser-modal', DeleteUserModal);
 
 /**
  * The following block of code may be used to automatically register your

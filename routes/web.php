@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SmmController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,11 +16,19 @@ Auth::routes();
 
 //Admin Role
 Route::middleware(['auth','user_type:admin'])->group(function() {
+    //Admin Dashboard
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
     Route::post('/admin/home', [ClientController::class, 'store'])->name('admin.store');
 
-    //Users
+    //Users View
     Route::get('/admin/users', [UsersController::class, 'usersList'])->name('users.admin');
+    Route::post('/admin/users', [UsersController::class, 'store'])->name('users.store');
+    Route::post('/admin/users', [UsersController::class, 'destroy'])->name('users.destroy');
+
+    //SMM View
+    Route::get('/admin/smm', [SmmController::class, 'smmList'])->name('smm.admin');
+    Route::post('/admin/smm/destroy', [SmmController::class, 'destroy'])->name('smm.destroy');
+    Route::post('/admin/smm/update', [SmmController::class, 'updateAsAdmin'])->name('smm.update');
 });
 
 //SMM Role

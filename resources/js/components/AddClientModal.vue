@@ -17,18 +17,17 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="select" class="form-label">Assigned User</label>
-                            <select class="form-select" v-model.number="client.assigned_user" id="select" aria-label="Floating label select example">
+                            <select class="form-select" v-if="users.length !== 0" v-model.number="client.assigned_user" id="select" aria-label="Floating label select example">
                                 <option v-for="user in users" :key="user.id" :value="user.id" >{{ user.name }}</option>
                             </select>
+                            <p v-if="!users.length" class="text-italic text-danger">No client user type exist</p>
                         </div>
                         <div class="col">
                             <label for="select" class="form-label">Assigned SMM</label>
-                            <select class="form-select" v-model="client.assign_smm" id="select" aria-label="Floating label select example">
-                            <option value="0">Lou</option>
-                            <option value="1">Kyra</option>
-                            <option value="2">Lor</option>
-                            <option value="3">Den</option>
+                            <select class="form-select" v-if="smm.length !== 0" v-model="client.assign_smm" id="select" aria-label="Floating label select example">
+                                <option v-for="socmed in smm" :key="socmed.socmed_id" :value="socmed.socmed_id" >{{ socmed.name }}</option>
                             </select>
+                            <p v-if="!smm.length" class="text-italic text-danger">No smm user type exist</p>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -54,7 +53,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <!--<input type="submit" class="btn btn-success" value="Add Client" />-->
-                <button type="button" @click="create" id="close" class="btn btn-primary">Create</button>
+                <button type="button" @click="create" id="close" class="btn btn-success"><i class="bi bi-add-user"></i> Create Client</button>
             </div>
         </form>
         </div>
@@ -78,7 +77,7 @@
     
     export default {
         name: 'add-client',
-        props: [ 'users' ],
+        props: [ 'users', 'smm' ],
 
         data() {
             return {
@@ -95,7 +94,7 @@
             }
         },
         created() {
-            console.log(this.myData);
+            console.log(this.users.length);
         },
         methods:{
             // Method to create a new client
@@ -120,6 +119,8 @@
                         plan:''
                     }
                     mythis.errorList = [];
+                    setTimeout(800);
+                    location.reload();
                 })
                 .catch(function(error) {
                     // Handle errors

@@ -5,15 +5,18 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Social Solutions</title>
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{ asset('/assets/img/socsal-favicon.webp') }}" rel="icon">
+  <link href="{{ asset('/assets/img/socsal-favicon.webp') }}" rel="apple-touch-icon">
+
+  <!-- Vue JS -->
+  @vite('resources/js/app.js')
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -26,19 +29,17 @@
   <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
- <!-- Template Main CSS File -->
- <link href="../assets/css/style.css" rel="stylesheet">
- <link href="../assets/css/main-style.css" rel="stylesheet">
-
-  <!-- Vue JS -->
-  @vite('resources/js/app.js')
-
+  <!-- <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet"> -->
+  <link href="../assets/vendor/datatables/datatables.min.css" rel="stylesheet">
 
 </head>
 
 <body>
+  <!-- Loader -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:white; z-index: 9999 !important;" id="loadingDiv">
+    <div class="loader"></div>
+  </div>
+
 <div id=app>
   <!-- Scripts -->
 
@@ -237,12 +238,10 @@
   <script src="../assets/vendor/chart.js/chart.umd.js"></script>
   <script src="../assets/vendor/echarts/echarts.min.js"></script>
   <script src="../assets/vendor/quill/quill.min.js"></script>
-  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <!--<script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>-->
   <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
 
 
 </html>

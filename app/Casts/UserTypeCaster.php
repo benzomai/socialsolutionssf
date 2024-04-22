@@ -3,27 +3,29 @@
 namespace App\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class UserTypeCaster implements CastsAttributes
 {
-    /**
-     * Cast the given value.
-     *
-     * @param  array<string, mixed>  $attributes
-     */
-    public function get(Model $model, string $key, mixed $value, array $attributes): mixed
+    public function get($model, string $key, $value, array $attributes)
     {
         return ['admin', 'smm', 'client'][$value];
     }
 
-    /**
-     * Prepare the given value for storage.
-     *
-     * @param  array<string, mixed>  $attributes
-     */
-    public function set(Model $model, string $key, mixed $value, array $attributes): mixed
+    
+    public function set($model, string $key, $value, array $attributes)
     {
-        return array_search($value, ['admin', 'smm', 'client']);
+        //Log::info("UserTypeCaster set method received value: $value");
+
+        $intValue = $value; // Assuming the integer value is already correct
+        
+        if (!in_array($intValue, [0, 1, 2])) {
+            Log::error("Invalid user type value received: $value");
+            $intValue = 0; // Default to the first user type (admin)
+        }
+
+        //Log::info("UserTypeCaster set method converted value to integer: $intValue");
+
+        return $intValue;
     }
 }
