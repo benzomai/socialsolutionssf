@@ -96,10 +96,19 @@ class UsersController extends Controller
 
         if($user && Auth::check()) {
 
+            if($user->user_type == "smm") {
+                DB::table('smm')->where('socmed_user_id','=',$request->id)->delete();
+            }
+            
+            if($user->user_type == "client") {
+                DB::table('clients')->where('assigned_user','=', $request->id)->delete();
+            }
+
             $user->delete();
+
             $users = DB::select('SELECT * FROM users');
             
-            return View::make('layouts.users')
+            return redirect()->back()
                 ->with('users', $users);
 
         } else {

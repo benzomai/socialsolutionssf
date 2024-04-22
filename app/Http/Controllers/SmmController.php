@@ -42,7 +42,6 @@ class SmmController extends Controller
 
             $user->delete();
             DB::table('smm')->where('socmed_user_id','=',$request->id)->delete();
-            DB::table('users')->where('id','=',$request->id)->delete();
 
             $smm = DB::select('SELECT * FROM smm');
             

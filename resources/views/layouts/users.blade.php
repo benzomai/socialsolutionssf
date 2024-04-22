@@ -14,7 +14,7 @@
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            
-            <form id="deleteUser" action="{{ route('users.destroy', 'id') }}" method="post">
+            <form id="deleteUser" action="{{ route('users.destroy') }}" method="post">
                 
                 @csrf
                 <input id="id" name="id" hidden>
